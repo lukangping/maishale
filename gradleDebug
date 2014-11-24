@@ -1,0 +1,2 @@
+export JAVA_OPTS="-Xmx1512M -XX:MaxPermSize=256M -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
+gradle "$@"
