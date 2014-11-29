@@ -2,6 +2,7 @@ package com.maishale.controller;
 
 import com.maishale.common.TaobaoConstant;
 import com.taobao.api.internal.util.WebUtils;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +30,16 @@ public class GetAccessTokenController {
         props.put("code",code);
         props.put("client_id", TaobaoConstant.TAOBAO_APPKEY);
         props.put("client_secret", TaobaoConstant.TAOBAO_APPSECRET);
-        props.put("redirect_uri", "http://www.test.com");
+        props.put("redirect_uri", "http://maishale.tanghongtech.com/");
         props.put("view","web");
 
-
         String result = WebUtils.doPost(url, props, 30000, 30000);
+
+        JSONObject jsonObject = JSONObject.fromObject(result);
+        String accessToken = jsonObject.get("access_token").toString();
+        System.out.println(accessToken);
+
+        model.addAttribute("accessToken", accessToken);
 
         return "access_token.jsp";
     }

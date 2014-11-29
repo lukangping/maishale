@@ -15,7 +15,6 @@ public class GetRequestTokenController {
 
     @RequestMapping(value="/getRequestToken", method = RequestMethod.GET)
     public String doGet(){
-
         return "request_token.jsp";
     }
 }
