@@ -23,8 +23,6 @@ public class HomeController {
 
     @RequestMapping(value="/", method= RequestMethod.GET)
     public String doGet(ModelMap model, HttpServletRequest request, HttpServletResponse response){
-
-        model.put("name", "lkp");
         return "index.jsp";
     }
 
